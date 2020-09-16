@@ -16,11 +16,11 @@ import com.devsuperior.pesquisa.services.GameService;
 public class GameController {
 	
 	@Autowired
-	private GameService service;
+	private GameService gameService;
 	
 	@GetMapping
 	public ResponseEntity<List<GameDTO>> findAll() {
-		List<GameDTO> list = service.findAll();
+		List<GameDTO> list = gameService.findAll();
 		return ResponseEntity.ok().body(list);
 		
 	}
