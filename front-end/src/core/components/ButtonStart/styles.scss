@@ -1,0 +1,19 @@
+.button-start{
+    width: 450px;
+    height: 70px;
+    display: flex;
+}
+
+.bg-blue-button{
+    background-color: #00D4FF;
+    border-radius: 10px 0 0 10px;
+    padding: 19px 46px 23px 45px;
+}
+.bg-orang-button{
+    background-color: #ED7947;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    border-radius: 0 10px 10px 0;
+}

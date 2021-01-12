@@ -1,0 +1,17 @@
+.nav-bar{
+    background-color: #37474F;
+    height: 70px;
+    display: flex;
+    align-items: center;
+
+    padding-left: 40px;
+}
+
+.nav-bar p {
+    margin-left: 12px;
+    font-weight: bold;
+    color: #fff
+}
+.nav-bar span {
+    color: #ED7947;
+}
