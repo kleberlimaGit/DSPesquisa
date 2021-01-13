@@ -1,7 +1,7 @@
 .home-container{
-    background-color:#0B1F34;
     height: calc(100vh - 70px);
     padding: 173px 150px 201px 140px;
+    background: url(../../core/assets/bg-home.svg) repeat-x bottom left #0B1F34 ;
 }
 
 .home-content{
@@ -20,4 +20,5 @@
     color: #ED7947;
     font-size: 24px;
     letter-spacing: -0.015em;
+    margin-bottom: 150px;
 }
