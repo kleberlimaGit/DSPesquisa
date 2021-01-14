@@ -1,0 +1,65 @@
+.record-container{
+  padding: 47px 40px 0px;  
+}
+
+.option-bar{
+    background-color: #37474F;
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
+    padding: 13px 15px;
+    display: flex;
+    
+}
+.option-bar form > input{
+    width: 273px;
+    height: 44px;
+    background-color: #FFFFFF;
+    border: 1px solid #E1E1E1;
+    border-radius: 10px;
+    margin: 0 15px;
+    outline: none;
+    padding-left: 14px;
+    
+    &::placeholder{
+        color: #9e9e9e;
+    }
+}
+
+.option-bar form > span {
+    background-color: #ED7947;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    border-radius: 10px;
+    width: 273px;
+    height: 44px;
+    display: inline-block;
+    line-height: 44px;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+
+
+}
+ .button-submit {
+    background-color: #00D4FF;
+    width: 273px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    margin-left: calc(100vw - 1270px);
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #0E1B28;
+    font-weight: bold;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover{
+        background-color:#0095b3;
+        transition: background-color 0.2s;
+    }
+}
