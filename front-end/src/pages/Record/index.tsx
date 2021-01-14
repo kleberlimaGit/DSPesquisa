@@ -7,8 +7,8 @@ const Record = () =>{
             <div className="record-content">
                 <div className="option-bar">
                     <form action="#">
-                        <input type="text" name="startDate" id="start-date" placeholder="Data Inicial"/>
-                        <input type="text" name="endDate" id="start-date" placeholder="Data Final"/>
+                        <input type="text" name="min" id="start-date" placeholder="Data Inicial"/>
+                        <input type="text" name="max" id="start-date" placeholder="Data Final"/>
                         <span>Limpar Pesquisa</span>
 
                         <button className="button-submit">Ver Gráfico</button>
