@@ -1,7 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+import { RecordResponse } from '../../core/types/Records';
+import { makeRequest } from '../../core/utils/request';
+import Pagination from '@material-ui/lab/Pagination';
 import './styles.scss'
-
 const Record = () =>{
+    
+    
+    
+    const [recordResponse, setRecordResponse] = useState<RecordResponse>();
+    const [activePage,setActivePage] = useState(0);
+    
+    moment.locale('pt-br')
+    
+
+    useEffect(() => {
+        const params = {
+            page: activePage,
+            linesPerPage:12
+        }
+        makeRequest({url: '/records', params})
+        .then(response => {
+            setRecordResponse(response.data)
+        })
+    },[activePage])
+    
+
     return (
         <div className="record-container">
             <div className="record-content">
@@ -27,18 +52,39 @@ const Record = () =>{
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>20/08/2020 13:45</td>
-                            <td>João da Silva</td>
-                            <td>23</td>
-                            <td>Playstation</td>
-                            <td>Ação - Aventura</td>
-                            <td>The Last of Us 2</td>
-                        </tr>
+                        
+                            {recordResponse?.content.map(record =>(
+                                <>
+                                <tr>
+                                    <td>{moment(record.moment).format('L')}</td>
+                                    <td>{record.name}</td>
+                                    <td>{record.age}</td>
+                                    <td>{record.gamePlatform}</td>
+                                    <td>{record.genreName}</td>
+                                    <td>{record.gameTitle}</td>
+                                </tr>    
+                                </>
+                            ))}
+                            
+                       
                     </tbody>
                 </table>
 
+                {recordResponse && (
+                    
+                    <>
+                        <div className="pagination-record">
+                            <Pagination  color="primary" count={recordResponse.totalPages} page={activePage + 1} 
+                            onChange={(event,page)=>{ setActivePage(page-1)}}
+                            hideNextButton 
+                            hidePrevButton />
+                        </div>
 
+
+                    </>
+
+                )}               
+        
             </div>
         </div>
     );
