@@ -76,8 +76,7 @@ const Record = () =>{
                         <div className="pagination-record">
                             <Pagination  color="primary" count={recordResponse.totalPages} page={activePage + 1} 
                             onChange={(event,page)=>{ setActivePage(page-1)}}
-                            hideNextButton 
-                            hidePrevButton />
+                             />
                         </div>
 
 
