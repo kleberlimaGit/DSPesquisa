@@ -7,7 +7,7 @@ const StartButton = () => (
             <p className="color-text"> QUERO SABER QUAIS SÃO</p>
         </div>
         <div className="bg-orang-button">
-            <Seta/>
+            <Seta className="button-arrow"/>
         </div>
     </div>
 );

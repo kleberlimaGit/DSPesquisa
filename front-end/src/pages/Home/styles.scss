@@ -1,7 +1,7 @@
 .home-container{
     height: calc(100vh - 70px);
     padding: 173px 150px 201px 140px;
-    background: url(../../core/assets/bg-home.svg) repeat-x bottom left;
+    background: url(../../core/assets/bg-home.svg) repeat-x bottom left ;
 }
 
 .home-content{
@@ -21,4 +21,21 @@
     font-size: 24px;
     letter-spacing: -0.015em;
     margin-bottom: 150px;
+}
+
+@media(max-height:800px){
+    
+    .home-content h1 {
+        font-size: 40px;
+    }
+    .home-content p {
+        font-size:20px
+    }
+    .gamer-img{
+        width: 400px;
+        height: 100%;
+    }
+    .home-container{
+        background-image: none;
+    }
 }

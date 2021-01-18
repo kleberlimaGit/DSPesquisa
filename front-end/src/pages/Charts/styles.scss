@@ -1,0 +1,30 @@
+.charts-container{
+    padding: 47px 40px 0px 40px; 
+}
+.charts-content .option-bar {
+    justify-content: flex-end;
+}
+
+.charts-content .option-bar button{
+    background-color: #00D4FF;
+    width: 273px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    margin-left: calc(100vw - 1270px);
+    border-radius: 10px;
+    text-transform: uppercase;
+    color: #0E1B28;
+    font-weight: bold;
+    margin-right: 38px;
+    border: none;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover{
+        background-color:#0095b3;
+        transition: background-color 0.2s;
+    }
+}
