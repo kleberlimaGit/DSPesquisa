@@ -1,7 +1,7 @@
 package com.devsuperior.pesquisa.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +22,7 @@ public class Record implements Serializable{
 	private Long id;
 	private String name;
 	private Integer age;
-	private Instant moment;
+	private LocalDate moment;
 	
 
 	@ManyToOne
@@ -33,7 +33,7 @@ public class Record implements Serializable{
 		
 	}
 
-	public Record(Long id, String name, Integer age, Instant moment, Game game) {
+	public Record(Long id, String name, Integer age, LocalDate moment, Game game) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -66,11 +66,11 @@ public class Record implements Serializable{
 		this.age = age;
 	}
 
-	public Instant getMoment() {
+	public LocalDate getMoment() {
 		return moment;
 	}
 
-	public void setMoment(Instant moment) {
+	public void setMoment(LocalDate moment) {
 		this.moment = moment;
 	}
 

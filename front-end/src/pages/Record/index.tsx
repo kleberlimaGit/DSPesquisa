@@ -1,45 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import { RecordResponse } from '../../core/types/Records';
 import { makeRequest } from '../../core/utils/request';
 import Pagination from '@material-ui/lab/Pagination';
 import './styles.scss'
+import RecordFilters, { FilterForm } from '../../core/components/RecordFilters';
+
+
+
 const Record = () =>{
-    
-    
-    
+        
     const [recordResponse, setRecordResponse] = useState<RecordResponse>();
     const [activePage,setActivePage] = useState(0);
     
     moment.locale('pt-br')
     
-
-    useEffect(() => {
+    const getRecords = useCallback((filter?: FilterForm) => {
         const params = {
             page: activePage,
-            linesPerPage:12
+            linesPerPage:12,
+            min: filter?.min,
+            max: filter?.max
         }
-        makeRequest({url: '/records', params})
-        .then(response => {
-            setRecordResponse(response.data)
-        })
+        
+            makeRequest({url: '/records', params})
+            .then(response => {
+                setRecordResponse(response.data)
+             })
     },[activePage])
+
+
+    
+    useEffect(() => {
+       getRecords();
+
+       
+    },[getRecords])
     
 
     return (
         <div className="record-container">
             <div className="record-content">
-                <div className="option-bar">
-                    <form action="#">
-                        <input type="text" name="min" id="start-date" placeholder="Data Inicial"/>
-                        <input type="text" name="max" id="start-date" placeholder="Data Final"/>
-                        <span>Limpar Pesquisa</span>
-
-                        <button className="button-submit">Ver Gráfico</button>
-                    </form>
-                </div>
-
+                <RecordFilters onSearch={filter => getRecords(filter)}/>
                 <table className="table-record" cellPadding="0" cellSpacing="0">
                     <thead>
                         <tr>
@@ -62,6 +65,7 @@ const Record = () =>{
                                     <td>{record.gamePlatform}</td>
                                     <td>{record.genreName}</td>
                                     <td>{record.gameTitle}</td>
+                                    <td hidden>key={record.id}</td>
                                 </tr>    
                                 </>
                             ))}

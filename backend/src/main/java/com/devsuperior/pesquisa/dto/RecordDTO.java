@@ -1,7 +1,7 @@
 package com.devsuperior.pesquisa.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
+import java.time.LocalDate;
 
 import com.devsuperior.pesquisa.entities.Record;
 import com.devsuperior.pesquisa.entities.enums.Platform;
@@ -11,7 +11,7 @@ public class RecordDTO implements Serializable{
 	
 
 	private Long id;
-	private Instant moment;
+	private LocalDate moment;
 	private String name;
 	private Integer age;
 	private String gameTitle;
@@ -40,11 +40,11 @@ public class RecordDTO implements Serializable{
 		this.id = id;
 	}
 
-	public Instant getMoment() {
+	public LocalDate getMoment() {
 		return moment;
 	}
 
-	public void setMoment(Instant moment) {
+	public void setMoment(LocalDate moment) {
 		this.moment = moment;
 	}
 

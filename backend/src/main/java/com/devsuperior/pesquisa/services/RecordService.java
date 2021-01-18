@@ -1,6 +1,6 @@
 package com.devsuperior.pesquisa.services;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,7 +29,7 @@ public class RecordService {
 		Record entity = new Record();
 			entity.setName(dto.getName());
 			entity.setAge(dto.getAge());
-			entity.setMoment(Instant.now());
+			entity.setMoment(LocalDate.now());
 			// recebendo o id do game;
 			Game game = gameRepository.getOne(dto.getGameId());
 			entity.setGame(game);
@@ -41,7 +41,7 @@ public class RecordService {
 	}
 	
 	@Transactional
-	public Page<RecordDTO> findByMoments(Instant minDate, Instant maxDate, PageRequest pageRequest) {
+	public Page<RecordDTO> findByMoments(LocalDate minDate, LocalDate maxDate, PageRequest pageRequest) {
 		
 		return recordRepository.findByMoments(minDate,maxDate,pageRequest).map(x-> new RecordDTO(x));
 	}

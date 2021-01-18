@@ -1,6 +1,6 @@
 package com.devsuperior.pesquisa.repositories;
 
-import java.time.Instant;
+import java.time.LocalDate;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -16,6 +16,6 @@ public interface RecordRepository extends JpaRepository<Record, Long> {
 	@Query("SELECT obj FROM Record obj WHERE "
 			+ "(coalesce(:min,null) IS NULL OR obj.moment >= :min) AND "
 			+ "(coalesce(:max,null) IS NULL OR obj.moment <= :max)")
-	Page<Record> findByMoments(Instant min, Instant max, Pageable pageRequest);
+	Page<Record> findByMoments(LocalDate min, LocalDate max, Pageable pageRequest);
 
 }

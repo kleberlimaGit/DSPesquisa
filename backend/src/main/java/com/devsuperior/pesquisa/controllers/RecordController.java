@@ -1,6 +1,7 @@
 package com.devsuperior.pesquisa.controllers;
 
-import java.time.Instant;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -41,8 +42,10 @@ public class RecordController {
 			@RequestParam(value = "orderBy", defaultValue = "moment") String orderBy,
 			@RequestParam(value = "direction", defaultValue = "DESC") String direction ) {
 		
-		Instant minDate = ("".equals(min)) ? null : Instant.parse(min);
-		Instant maxDate = ("".equals(max)) ? null : Instant.parse(max);
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
+		LocalDate minDate = ("".equals(min)) ? null : LocalDate.parse(min,formatter);
+		LocalDate maxDate = ("".equals(max)) ? null : LocalDate.parse(max,formatter);
 		
 		if(linesPerPage == 0) {
 			linesPerPage = Integer.MAX_VALUE;
