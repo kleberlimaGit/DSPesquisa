@@ -21,14 +21,14 @@ const RecordFilters = ({ onSearch }: Props) => {
     const [maxDate, setMaxDate] = useState('');
 
 
-    const handleBlurMinDate = (min: string) => {
+    const handleChangeMinDate = (min: string) => {
         setMinDate(min)
         if(min.length ===10 || min.length === 0){
             onSearch({ min, max: maxDate })
         }
         
     }
-    const handleBlurMaxDate = (max: string) => {
+    const handleChangeMaxDate = (max: string) => {
         setMaxDate(max)
         if(max.length === 10 || max.length === 0){
             onSearch({ min: minDate, max })
@@ -54,14 +54,14 @@ const RecordFilters = ({ onSearch }: Props) => {
                 placeholder="Data inicial"
                 guide={false}
                 value={minDate} 
-                onChange={event => handleBlurMinDate(event.target.value)}
+                onChange={event => handleChangeMinDate(event.target.value)}
                 
             />
 
             <MaskedInput mask={[/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/]} placeholder="Data Final"
                 value={maxDate}
                 guide={false}
-                onChange={event => handleBlurMaxDate(event.target.value)}
+                onChange={event => handleChangeMaxDate(event.target.value)}
             />
 
 
