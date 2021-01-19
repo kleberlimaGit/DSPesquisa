@@ -28,3 +28,32 @@
         transition: background-color 0.2s;
     }
 }
+
+
+
+
+.show-chart{
+    
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+    color: #fff;
+    
+}
+
+
+.top-related, .platform-chart , .gender-chart{
+    background-color: #37474F;
+    border-radius: 10px;
+    padding: 16px 16px;
+}
+
+.charts{
+    margin-left: 25px;
+}
+
+.platform-chart{
+    margin-bottom: 25px;
+}
+
+
