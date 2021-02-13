@@ -1,48 +1,26 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import MaskedInput from 'react-text-mask'
 
 import './styles.scss'
 
-export type FilterForm = {
-    min?: string,
-    max?: string,
-}
 
 type Props = {
-    onSearch: (filter: FilterForm) => void;
+    handleChangeMinDate: (min:string) => void;
+    handleChangeMaxDate:(max:string) => void;
+    minDate:string,
+    maxDate:string,
+    clearFilters: () => void
 }
 
 
-const RecordFilters = ({ onSearch }: Props) => {
-
-    const [minDate, setMinDate] = useState('');
-    const [maxDate, setMaxDate] = useState('');
+const RecordFilters = ({minDate,maxDate,handleChangeMinDate,handleChangeMaxDate,clearFilters }: Props) => {
 
 
-    const handleChangeMinDate = (min: string) => {
-        setMinDate(min)
-        if(min.length ===10 || min.length === 0){
-            onSearch({ min, max: maxDate })
-        }
-        
-    }
-    const handleChangeMaxDate = (max: string) => {
-        setMaxDate(max)
-        if(max.length === 10 || max.length === 0){
-            onSearch({ min: minDate, max })
-        }
 
-        
-    }
 
-    const clearFilters = () => {
-        setMinDate('')
-        setMaxDate('');
-
-        onSearch({ min: (''), max: ('') })
-    }
+    
 
 
     return (

@@ -5,7 +5,7 @@ import { RecordResponse } from '../../core/types/Records';
 import { makeRequest } from '../../core/utils/request';
 import Pagination from '@material-ui/lab/Pagination';
 import './styles.scss'
-import RecordFilters, { FilterForm } from '../../core/components/RecordFilters';
+import RecordFilters from '../../core/components/RecordFilters';
 
 
 
@@ -13,22 +13,24 @@ const Record = () =>{
         
     const [recordResponse, setRecordResponse] = useState<RecordResponse>();
     const [activePage,setActivePage] = useState(0);
+    const [minDate, setMinDate] = useState('');
+    const [maxDate, setMaxDate] = useState('');
     
     moment.locale('pt-br')
     
-    const getRecords = useCallback((filter?: FilterForm) => {
+    const getRecords = useCallback(() => {
         const params = {
             page: activePage,
             linesPerPage:12,
-            min: filter?.min,
-            max: filter?.max
+            min: minDate,
+            max: maxDate
         }
-        
+       
             makeRequest({url: '/records', params})
             .then(response => {
                 setRecordResponse(response.data)
              })
-    },[activePage])
+    },[activePage,minDate,maxDate])
 
 
     
@@ -37,12 +39,39 @@ const Record = () =>{
 
        
     },[getRecords])
+
+    const handleChangeMinDate = (min: string) => {
+        setActivePage(0)
+        if(min.length ===10 || min.length === 0){
+            setMinDate(min);
+        }
+        
+    }
+    const handleChangeMaxDate = (max: string) => {
+        setActivePage(0)
+        if(max.length === 10){
+            setMaxDate(max)
+        }
+
+        
+    }
+
+    const clearFilters = () => {
+        setActivePage(0)
+        setMinDate('')
+        setMaxDate('');
+    }
     
 
     return (
         <div className="record-container">
             <div className="record-content">
-                <RecordFilters onSearch={filter => getRecords(filter)}/>
+                <RecordFilters
+                minDate={minDate}
+                maxDate={maxDate} 
+                clearFilters={clearFilters}
+                handleChangeMaxDate={handleChangeMaxDate}
+                handleChangeMinDate={handleChangeMinDate}/>
                 <table className="table-record" cellPadding="0" cellSpacing="0">
                     <thead>
                         <tr>
